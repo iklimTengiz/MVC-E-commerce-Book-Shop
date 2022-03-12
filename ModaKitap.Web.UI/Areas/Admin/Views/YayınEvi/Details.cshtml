@@ -1,0 +1,78 @@
+﻿@model ModaKitap.Model.Core.Entity.YayınEvi
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<p><b style="color:#ff6a00; font-size:17px;">@Html.DisplayFor(model => model.YayınEviİsim)</b> </p>
+<hr style="color:#ff6a00;" />
+<hr />
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Üst Kategori ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UstID)
+        </dd>
+
+        <dt>
+            Yayın Evi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayınEviİsim)
+        </dd>
+
+        <dt>
+            Aktif mi?
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aktif_Degil)
+        </dd>
+
+        <dt>
+            Oluşturulma Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusumTarihi)
+        </dd>
+
+        <dt>
+            Oluşturan Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+        </dd>
+
+        <dt>
+            Güncellenme Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarih)
+        </dd>
+
+        <dt>
+            Güncelleyen Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

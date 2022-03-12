@@ -1,0 +1,127 @@
+﻿@model List<ModaKitap.Model.Core.Entity.Kitaplar>
+@{
+    ViewBag.Title = "Index";
+    var isLogin = (bool)ViewBag.IsLogin;
+    var kategori = (ModaKitap.Model.Core.Entity.Kategori)ViewBag.kategori;
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Sözleşmeler</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--sözleşmeler Listesi-->
+                        @{
+                            {
+                                var usr = Session["LoginUser"] as ModaKitap.Model.Core.Entity.User;
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a href="/Adreslerim">Adresler</a></h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a href="/Siparislerim">Siparişlerim</a></h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a href="/Sepetim">Sepet</a></h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a href="/Begenilenler">Beğendim Ürünler</a></h4>
+                                    </div>
+                                </div>
+                                <hr />
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"><a href="/LogOut">Çıkış Yap</a></h4>
+                                    </div>
+                                </div>
+
+                            }
+                        }
+                    </div><!--/category-products-->
+
+
+                    <div class="shipping text-center">
+                        <!--shipping-->
+                        <img src="~/Content/images/home/shipping.jpg" />
+                      
+                    </div><!--/shipping-->
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="blog-post-area">
+                    <h2 class="title text-center">Profil</h2>
+                    <div class="single-blog-post">
+
+
+                        <div class="recommended_items">
+                            <!--recommended_items-->
+                            <h2 class="title text-center">Moda Kitaplar</h2>
+
+                            @Html.Action("soneklenen", "PartialView")
+                        </div><!--/recommended_items-->
+                     
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <div class="banner">
+                                    <img src="~/Content/images/banner.jpg" />
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                            <div class="category-tab">
+                                <!--category-tab-->
+                                <div class="col-sm-12">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#tshirt" data-toggle="tab">Size Özel Ürünler</a></li>
+                                        <li><a href="#blazers" data-toggle="tab">Önerilen Ürünler</a></li>
+                                        <li><a href="#sunglass" data-toggle="tab">En Çok Satılanlar</a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade active in" id="tshirt">
+
+                                        @Html.Action("begenilist", "PartialView")
+                                    </div>
+
+                                    <div class="tab-pane fade" id="blazers">
+                                        @Html.Action("soneklenen", "PartialView")
+                                    </div>
+
+                                    <div class="tab-pane fade" id="sunglass">
+                                        @Html.Action("soneklenen", "PartialView")
+                                    </div>
+
+
+
+                                </div>
+                            </div><!--/category-tab-->
+
+
+
+
+                        </div>
+                </div><!--/blog-post-area-->
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+</section>

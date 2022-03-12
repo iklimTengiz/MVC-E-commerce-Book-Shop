@@ -1,0 +1,243 @@
+﻿@model ModaKitap.Model.Core.Entity.Kitaplar
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script src="~/Content/AdminContent/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+<script src="~/Content/AdminContent/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<link href="~/Content/AdminContent/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<link href="~/Content/AdminContent/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
+
+<p><b style="color:#ff6a00; font-size:17px;">@Model.KitapAdı</b> Adlı kitabı silmek istediğinize emin misiniz?</p>
+<hr style="color:#ff6a00;" />
+<div>
+
+    <dl class="dl-horizontal">
+        <dt>
+            Kitap Resmi
+        </dt>
+
+        <dd>
+            <img src="/Admin/KitapResimAdmin/@Model.ResimURL"style="height: 277px; width: 166px;" alt="UrunResim">
+
+        </dd>
+
+
+        <dt>
+            Kitap
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KitapAdı)
+        </dd>
+
+
+        <dt>
+            Kategori
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.Kategoriİsim)
+        </dd>
+
+        <dt>
+            Yayın Evi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayınEvi.YayınEviİsim)
+        </dd>
+
+
+        <dt>
+            Kargo Ödeme Tipi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KargoKiminsID)
+        </dd>
+
+        <dt>
+            Kitap Kondisyonu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KondisyonsID)
+        </dd>
+
+        <dt>
+            Cilt Durumu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CiltDurumusID)
+        </dd>
+
+        <dt>
+            Yazar
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yazar)
+        </dd>
+
+        <dt>
+            En
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boyuten)
+        </dd>
+
+        <dt>
+            Boy
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boyutboy)
+        </dd>
+
+        <dt>
+            Açıklama
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            Çevirmen
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ceviren)
+        </dd>
+
+        <dt>
+            Yayın Yeri
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayinYeri)
+        </dd>
+
+        <dt>
+            Yayın Yılı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayinYili)
+        </dd>
+
+        <dt>
+            ISBN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ISBN)
+        </dd>
+
+        <dt>
+            Hazırlayan
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hazirlayan)
+        </dd>
+
+        <dt>
+            Dil
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dil)
+        </dd>
+
+        <dt>
+            İkinci Dil
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dil2)
+        </dd>
+
+        <dt>
+            Sayfa Sayısı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SayfaSayisi)
+        </dd>
+
+
+
+        <dt>
+            Fiyat
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            Yapılan İndirim
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.İndirim)
+        </dd>
+
+        <dt>
+            Stok
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stok)
+        </dd>
+
+        <dt>
+            Eklenen Tarih
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusumTarihi)
+        </dd>
+
+        <dt>
+            Ekleyen Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+        </dd>
+
+        <dt>
+            Son Güncellenme Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarih)
+        </dd>
+
+        <dt>
+            Güncelleyen Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Siparis>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+
+
+<h4>Siparişlerim</h4>
+    <table class="table">
+        <tr>
+            <th>
+                Sipariş No
+            </th>
+            <th>
+                Durum
+            </th>
+            <th>
+                Toplam Tutar
+            </th>
+            <th>
+                Tarih
+            </th>
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Durum.Name)
+                </td>
+            
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToplamTutar)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.OlusumTarihi)
+                </td>
+
+                <td>
+
+                   | @Html.ActionLink("Sipariş Detayı", "Detail", new { id = item.ID }) |
+
+                </td>
+            </tr>
+        }
+
+    </table>

@@ -1,0 +1,82 @@
+﻿@model ModaKitap.Model.Core.Entity.YayınEvi
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+<p><b style="color:#ff6a00; font-size:17px;">@Html.DisplayFor(model => model.YayınEviİsim)</b> Adlı yayın evini silmek istediğinize emin misiniz?</p>
+<hr style="color:#ff6a00;" />
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UstID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UstID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YayınEviİsim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayınEviİsim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aktif_Degil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aktif_Degil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusumTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusturanKullanıcıID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncellemeTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncelleyennKullanıcıID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Sil" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

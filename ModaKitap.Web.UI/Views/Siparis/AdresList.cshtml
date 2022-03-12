@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.UserAdres>
+
+@{
+    ViewBag.Title = "AdresList";
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+
+
+<section id="cart_items">
+    <div class="container">
+
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li class="active">Anasayfa &emsp; > </li>
+                <li class="active"> Sepet &emsp;  > </li>
+                <li> Adres Seç</li>
+                <li class="active"> > &emsp; Sipariş Detayı  </li>
+            </ol>
+        </div>
+        <p>
+            @Html.ActionLink("Yeni Adres Ekle", "CreateUserAdress")
+        </p>
+        <div class="table-responsive cart_info">
+
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+
+                        <td class="description">Adres</td>
+                     
+                        <td class="price">Şehir</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+
+                    <tbody>
+                        <tr>
+
+                            <td class="cart_description">
+                                <h4><a href="">@Html.DisplayFor(modelItem => item.Title)</a></h4>
+                                <p>@Html.DisplayFor(modelItem => item.Adres)</p>
+                            </td>
+                        
+                            <td> @Html.DisplayFor(modelItem => item.Sehir)</td>
+                            <td class="cart_delete" style="float:right;">
+                                @Html.ActionLink("Seç ve Sipariş Ver", "CreateOrder", new { id = item.ID })
+                            </td>
+
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
+
+    </div>
+</section> <!--/#cart_items-->
+
+
+
+

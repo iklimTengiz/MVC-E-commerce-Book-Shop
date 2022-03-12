@@ -1,0 +1,80 @@
+﻿@model ModaKitap.Model.Core.Entity.Kategori
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<p><b style="color:#ff6a00; font-size:17px;">@Model.Kategoriİsim</b> Adlı kategoriyi silmek istediğinize emin misiniz?</p>
+<hr style="color:#ff6a00;" />
+<dl class="dl-horizontal">
+    <dt>
+       Üst Kategori ID
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.UstID)
+    </dd>
+
+    <dt>
+        Kategori
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Kategoriİsim)
+    </dd>
+
+    <dt>
+        Aktif mi?
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Aktif_Degil)
+    </dd>
+
+    <dt>
+        Oluşturulma Tarihi
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.OlusumTarihi)
+    </dd>
+
+    <dt>
+       Oluşturan Kullanıcı
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+    </dd>
+
+    <dt>
+        Güncellenme Tarihi
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.GuncellemeTarih)
+    </dd>
+
+    <dt>
+        Güncelleyen Kullanıcı
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+    </dd>
+
+</dl>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Sil" class="btn btn-default" /> |
+        @Html.ActionLink("Listeye Dön", "Index")
+    </div>
+}
+</div>

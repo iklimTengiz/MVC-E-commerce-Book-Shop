@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+    string msj = "";
+    if (TempData["mesaj"] != null)
+    {
+        msj = TempData["mesaj"].ToString();
+    }
+}
+
+<div id="contact-page" class="container">
+    <div class="bg">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="title text-center">Contact <strong>Us</strong></h2>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3011.6103916042566!2d29.025074914782806!3d40.99001142849869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab8661ee00341%3A0x78573abe87a0a6c8!2sModa+Kitap!5e0!3m2!1str!2str!4v1562594425258!5m2!1str!2str" width="1120" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="contact-form">
+                    <h2 class="title text-center">Bize Ulaşın</h2>
+                    @using (Html.BeginForm("Index", "İletisim", FormMethod.Post, new { @class = "" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="status alert alert-success" style="display: none"></div>
+                        <form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
+                            <div class="form-group col-md-6">
+                                <input type="text" name="name" class="form-control" required="required" placeholder="İsim">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <input type="email" name="email" class="form-control" required="required" placeholder="E-Mail">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="text" name="subject" class="form-control" required="required" placeholder="Konu">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Mesajınız."></textarea>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="submit" name="Gönder" class="btn btn-primary pull-right" value="Gönder">
+                            </div>
+                        </form>
+                        <div class="columns small-12 medium-7">
+                            @{
+                                if (TempData["mesaj"] != null)
+                                {
+                                    @Html.Raw(msj)
+                                }
+                            }
+                        </div>
+                    }
+                </div>
+
+
+            </div>
+            <div class="col-sm-4">
+                <div class="contact-info">
+                    <h2 class="title text-center">İletişim Bilgileri</h2>
+                    <address>
+                        <p>Moda Kitap</p>
+                        <p>Kazasker Sk. 12/2 Karadeniz Apt.)</p>
+                        <p>Kadıköy/İSTANBUL</p>
+                        <p>Telefon:(0216)349-48-46</p>
+                        <p>Email: moda@modakitap.com</p>
+                    </address>
+                    <div class="social-networks">
+                        <h2 class="title text-center">Sosyal Ağ Hesapları</h2>
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!--/#contact-page-->

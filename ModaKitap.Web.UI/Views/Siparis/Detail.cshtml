@@ -1,0 +1,112 @@
+﻿@model ModaKitap.Model.Core.Entity.Siparis
+@{
+    ViewBag.Title = "Sipariş Detayı";
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+<h2>@Model.ID Numaralı Siparişinizin Durumu :@Model.Durum.Name</h2>
+<hr />
+
+<b>Banka Bilgileri</b>
+<table>
+    <tr>
+        <td>
+            Banka
+        </td>
+        <td>
+            Banka İsim
+        </td>
+    </tr>
+    <tr>
+        <td>
+            IBAN
+        </td>
+        <td>
+            TR654060545548799879874654
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Alıcı Adı
+        </td>
+        <td>
+            Moda Kitap
+        </td>
+    </tr>
+
+</table>
+@{
+    if (Model.DurumID == 2)
+    {
+        <a href="/Siparis/Pay?id=@Model.ID" class="btn btn-success">ÖDEME YAPTIM(EFT/Havale)</a>
+    }
+    <hr />
+
+
+
+
+
+}
+
+<b>Sipariş Bilgileri</b>
+<table>
+    <tr>
+        <td>
+            Toplam
+        </td>
+        <td>
+            @Model.ToplamTutar.ToString("##,## ₺")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Ürünler Toplamı
+        </td>
+        <td>
+            @Model.Toplam.ToString("##,## ₺")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            İndirim Toplamı
+        </td>
+        <td>
+            @Model.İndirimToplamı.ToString("##,## ₺")
+        </td>
+        <td>
+            KDV Toplamı
+        </td>
+        <td>
+            @Model.ToplamKDV.ToString("##,## ₺")
+        </td>
+    </tr>
+</table>
+<hr />
+
+
+<b>Ürünler</b>
+<table>
+    <tr>
+        <td>
+            Toplam
+        </td>
+        <td>
+            @Model.ToplamTutar.ToString("##,## ₺")
+        </td>
+    </tr>
+    <tr>
+        <th>Ürün</th>
+        <th>Adet</th>
+    </tr>
+    <tr>
+        @{
+            foreach (var item in Model.SiparisDetays)
+            {
+                var p = new ModaKitap.Model.Core.ModaKitapDB().Kitaplars.Where(x => x.ID == item.KitapID).FirstOrDefault();
+                <td>@p.KitapAdı</td>
+                <td>@item.Adet</td>
+            }
+
+        }
+    </tr>
+</table>

@@ -1,0 +1,116 @@
+﻿@model ModaKitap.Model.Core.Entity.Kitaplar
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Kitaplar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.Kategoriİsim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.Kategoriİsim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YayınEvi.YayınEviİsim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayınEvi.YayınEviİsim)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KitapAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KitapAdı)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.İndirim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.İndirim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusumTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusturanKullanıcıID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncellemeTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncelleyennKullanıcıID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

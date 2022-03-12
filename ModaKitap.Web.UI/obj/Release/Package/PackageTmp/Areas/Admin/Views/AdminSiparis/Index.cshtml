@@ -1,0 +1,87 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Siparis>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sipariş Listesi</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Durum
+        </th>
+        <th>
+           Ad-Soyad
+        </th>
+        <th>
+            Mail
+        </th>
+        <th>
+           Telefon
+        </th>
+        <th>
+            Adres
+        </th>
+        <th>
+           Tutar
+        </th>
+        <th>
+           KDV
+        </th>
+        <th>
+           İndirim
+        </th>
+        <th>
+           Genel Toplam
+        </th>
+        <th>
+           Tarih
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Durum.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Ad)&nbsp; @Html.DisplayFor(modelItem => item.User.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.User.Mail)
+        </td>
+        <td>
+            @Html.DisplayFor(model =>item.User.Telefon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserAdres.Adres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToplamTutar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToplamKDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.İndirimToplamı)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Toplam)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OlusumTarihi)
+        </td>
+
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>

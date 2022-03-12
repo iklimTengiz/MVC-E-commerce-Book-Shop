@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModaKitap.Web.UI", "ModaKitap.Web.UI\ModaKitap.Web.UI.csproj", "{65A1493F-3A25-4A08-AE79-32B13B458142}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModaKitap.Model.Core", "..\ModaKitap.Model.Core\ModaKitap.Model.Core.csproj", "{69FD3FFC-F861-47F4-A2D8-D83FFBD5A408}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65A1493F-3A25-4A08-AE79-32B13B458142}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65A1493F-3A25-4A08-AE79-32B13B458142}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65A1493F-3A25-4A08-AE79-32B13B458142}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65A1493F-3A25-4A08-AE79-32B13B458142}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69FD3FFC-F861-47F4-A2D8-D83FFBD5A408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FD3FFC-F861-47F4-A2D8-D83FFBD5A408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FD3FFC-F861-47F4-A2D8-D83FFBD5A408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FD3FFC-F861-47F4-A2D8-D83FFBD5A408}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6E5A8B8A-0646-4ECA-8558-B70999069395}
+	EndGlobalSection
+EndGlobal

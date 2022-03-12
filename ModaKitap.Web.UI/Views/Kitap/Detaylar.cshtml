@@ -1,0 +1,194 @@
+﻿@model ModaKitap.Model.Core.Entity.Kitaplar
+@{
+    /**/
+
+
+    ViewBag.Title = "Detaylar";
+    var isLogin = (bool)ViewBag.IsLogin;
+    var kategori = (ModaKitap.Model.Core.Entity.Kategori)ViewBag.kategori;
+    var yayınevi = (ModaKitap.Model.Core.Entity.YayınEvi)ViewBag.yayınevi;
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+
+
+
+
+<script src="~/Content/js/Sepet-begeni.js"></script>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Kategoriler</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--Kategori Menu-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="text-align:center;">
+                                <h4 class="panel-title"> @Html.Action("KategoriMenu", "Home")</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="product-details">
+                    <!--product-details-->
+                    <div class="col-sm-5">
+                        <div class="view-product">
+
+                        </div>
+                        <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+
+
+                            <img src="/Admin/KitapResimAdmin/@Model.ResimURL" alt="" style="max-width:65%;">
+
+
+
+
+
+                        </div>
+                        <div class="container">
+
+                            <p>
+
+                                @{
+                                    if (isLogin)
+                                    {
+                                        <a href="#"data-pID="@Model.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                        <a href="#" data-pID="@Model.ID" class="btn btn-default sepeteekle" onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                    }
+                                    else
+                                    {
+                                        <a href="/uyegiris" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                        <a href="/uyegiris" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                    }
+
+
+                                }
+                            </p>
+
+                            <div id="JvModal" title="Tebrikler">
+                                Ürün başarılı bir şekilde sepete eklendi.
+                            </div>
+
+                            <div class="row"></div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="product-information">
+                            <!--/product-information-->
+                            <div class="row">
+                                <img src="images/product-details/new.jpg" class="newarrival" alt="" />
+                                <h2>@Model.KitapAdı</h2>
+                                <p><i>ID:</i>@Model.ID</p>
+                                <img src="images/product-details/rating.png" alt="" />
+                                <span>
+                                    <span><i style="font-size:15px; color:#363432; font-family: 'Roboto', sans-serif;">Fiyat:</i>@Model.Fiyat.ToString("##,## ₺")</span><br />
+                                    <span><i style="font-size:15px; color:#363432; font-family: 'Roboto', sans-serif;">İndirim Tutarı:</i>@Model.İndirim.ToString("##,## ₺")</span>
+
+                                </span>
+                                <p>
+                                    <b>
+                                        Kategori:
+                                    </b>
+                                    @Model.Kategori.Kategoriİsim
+                                </p>
+                                <p>
+                                    <br />
+                                    <b>
+                                        Yazar:
+                                    </b>
+                                    @Model.Yazar
+                                </p>
+                                <p>
+                                    <br />
+                                    <b>
+                                        Yayın Evi:
+                                    </b>
+                                    @Model.YayınEvi.YayınEviİsim
+                                </p>
+
+                            </div>
+                            <p>
+                                @{
+                                    if (isLogin)
+                                    {
+                                        <a href="#" data-pID="@Model.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                        <a href="#" data-pID="@Model.ID" class="btn btn-default sepeteekle" onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                    }
+                                    else
+                                    {
+                                        <a href="/uyegiris" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                        <a href="/uyegiris" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                    }
+                                }
+                            </p>
+
+                            <div id="JvModal" class="JvModal">
+                                <p>Tebrikler  <br />Ürün başarılı bir şekilde sepete eklendi.</p>  <br />
+                                <div>
+                                    <a href="/sepetim" class="btn btn-success">Sepete Git</a>
+                                    <button class="btn btn-default">Kapat</button>
+                                </div>
+                            </div>
+                            <div class="row"></div>
+
+                            <a href=""><img src="images/product-details/share.png" class="share img-responsive" alt="" /></a>
+                        </div><!--/product-information-->
+                    </div>
+                </div><!--/product-details-->
+                <div class="category-tab shop-details-tab">
+                    <!--category-tab-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li><a href="#details" data-toggle="tab">Detaylar</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+
+                        <div class="tab-pane fade active in" id="reviews">
+                            <div class="col-sm-12">
+                                <ul>
+                                    <li><a href=""><i class="fa fa-user"></i>@Model.KitapAdı</a></li>
+
+                                </ul>
+                                <p>@Model.Aciklama</p>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div><!--/category-tab-->
+
+                <div class="recommended_items">
+                    <!--recommended_items-->
+                    <h2 class="title text-center">Moda Kitaplar</h2>
+
+                    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+
+
+                        @Html.Action("soneklenen", "PartialView")
+                    </div>
+                </div><!--/recommended_items-->
+
+            </div>
+        </div>
+    </div>
+</section>
+<p>

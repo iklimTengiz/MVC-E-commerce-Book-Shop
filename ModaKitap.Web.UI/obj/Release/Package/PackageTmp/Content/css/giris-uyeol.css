@@ -1,0 +1,169 @@
+
+.golgeli-kutu-kayit {
+    border-radius: 8px;
+    margin-left: 149px;
+    box-shadow: 2px 2px 6px #000;
+    width: 850px;
+    padding: 15px;
+    font: 12px Arial, Helvetica, sans-serif;
+    background: #0b93d2;
+    font-family: "Roboto", sans-serif;
+    color: white;
+    position: center;
+    text-align: center;
+}
+
+        .golgeli-kutu-kayit h2 {
+            color: white;
+            margin-bottom: 2px;
+            margin-top: 3px;
+        }
+
+        .golgeli-kutu-kayit hr {
+            color: white;
+        }
+
+        .golgeli-kutu-kayit .button button_save .button_member_save {
+            background: #f0f0e9;
+            border: medium none;
+            border-radius: 0;
+            color: #808080;
+            display: block;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            padding: 6px 25px;
+        }
+
+        .golgeli-kutu-kayit b a{
+            color:aquamarine
+        }
+            .golgeli-kutu-kayit , b a:hover {
+                color: azure;
+                text-decoration: dotted !important;
+            }
+
+
+        .golgeli-kutu-kullanici {
+            border-radius: 8px;
+            margin-left: 300px;
+            box-shadow: 2px 2px 6px #000;
+            width: 465px;
+            padding: 15px;
+            font: 12px Arial, Helvetica, sans-serif;
+            background: #0b93d2;
+            font-family: "Roboto", sans-serif;
+            color: white;
+            position: center;
+            text-align: center;
+        }
+
+    .golgeli-kutu-kullanici h2 {
+        color: white;
+        margin-bottom: 2px;
+        margin-top: 3px;
+    }
+
+    .golgeli-kutu-kullanici hr {
+        color: white;
+    }
+
+    .golgeli-kutu-kullanici .login-form form button, .signup-form form button {
+        background: #f0f0e9;
+        border: medium none;
+        border-radius: 0;
+        color: #808080;
+        display: block;
+        border-radius: 8px;
+        font-family: 'Roboto', sans-serif;
+        padding: 6px 25px;
+    }
+
+
+@media only screen and (max-width: 600px) {
+    .golgeli-kutu-kayit {
+        border-radius: 8px;
+        margin-left: 0px;
+        box-shadow: 2px 2px 6px #000;
+        width: 417px;
+        padding: 15px;
+        font: 12px Arial, Helvetica, sans-serif;
+        background: #0b93d2;
+        font-family: "Roboto", sans-serif;
+        color: white;
+        position: center;
+        text-align: center;
+    }
+
+        .golgeli-kutu-kayit h2 {
+            color: white;
+            margin-bottom: 2px;
+            margin-top: 3px;
+        }
+
+        .golgeli-kutu-kayit hr {
+            color: white;
+        }
+
+        .golgeli-kutu-kayit .button button_save .button_member_save {
+            background: #f0f0e9;
+            border: medium none;
+            border-radius: 0;
+            color: #808080;
+            display: block;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            padding: 6px 25px;
+        }
+
+        .golgeli-kutu-kayit b a {
+            color: aquamarine
+        }
+
+    .golgeli-kutu-kayit, b a:hover {
+        color: azure;
+        text-decoration: dotted !important;
+    }
+
+    .golgeli-kutu-kullanici {
+        border-radius: 8px;
+        margin-left: 0px;
+        box-shadow: 2px 2px 6px #000;
+        width: 421px;
+        padding: 15px;
+        font: 12px Arial, Helvetica, sans-serif;
+        background: #0b93d2;
+        font-family: "Roboto", sans-serif;
+        color: white;
+        position: center;
+        text-align: center;
+    }
+
+        .golgeli-kutu-kullanici h2 {
+            color: white;
+            margin-bottom: 2px;
+            margin-top: 3px;
+        }
+
+        .golgeli-kutu-kullanici hr {
+            color: white;
+        }
+
+        .golgeli-kutu-kullanici .login-form form button, .signup-form form button {
+            background: #f0f0e9;
+            border: medium none;
+            border-radius: 0;
+            color: #808080;
+            display: block;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            padding: 6px 25px;
+        }
+  }
+
+
+
+      
+   
+
+
+

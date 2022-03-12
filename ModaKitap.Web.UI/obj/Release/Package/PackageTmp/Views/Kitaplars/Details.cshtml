@@ -1,0 +1,110 @@
+﻿@model ModaKitap.Model.Core.Entity.Kitaplar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Kitaplar</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.Kategoriİsim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.Kategoriİsim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YayınEvi.YayınEviİsim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YayınEvi.YayınEviİsim)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KitapAdı)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KitapAdı)
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimURL)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.İndirim)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.İndirim)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stok)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stok)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusumTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OlusturanKullanıcıID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncellemeTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncelleyennKullanıcıID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

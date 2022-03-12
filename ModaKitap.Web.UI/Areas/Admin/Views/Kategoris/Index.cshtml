@@ -1,0 +1,50 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Oluştur", "Create")
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Kategori
+        </th>
+        <th>
+           Aktif mi?
+        </th>
+        <th>
+          Oluşturulma Tarihi
+        </th>
+      
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategoriİsim)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aktif_Degil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OlusumTarihi)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

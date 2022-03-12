@@ -1,0 +1,179 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Kitaplar>
+@{
+    ViewBag.Title = "Index";
+    var isLogin = (bool)ViewBag.IsLogin;
+    var yayınevi = (ModaKitap.Model.Core.Entity.YayınEvi)ViewBag.yayınevi;
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+<!--Left Menu Başlangıç-->
+<div class="container">
+    <div class="row">
+
+
+
+
+
+        <div class="col-sm-3">
+            <div class="left-sidebar">
+                <h2>Kategoriler</h2>
+                <div class="panel-group category-products" id="accordian">
+                    <!--Kategori Menu-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="text-align:center;">
+                            <h4 class="panel-title">@Html.Action("YayınEviMenu", "Home")</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--Kategori Menu  SON -->
+
+
+
+
+
+                <div class="shipping text-center">
+                    <!--shipping-->
+                    <img src="~/Content/images/home/shipping.jpg" alt="" />
+                </div><!--/shipping-->
+
+            </div>
+        </div>
+
+
+
+
+        <div class="col-sm-9 ">
+            <div class="features_items">
+                <h2 class="title text-center">@ViewBag.YayınEvi.YayınEviİsim</h2>
+
+                @{
+                    foreach (var item in Model)
+                    {
+
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="/Admin/KitapResimAdmin/@item.ResimURL" alt="" />
+                                        <h2>@item.Fiyat.ToString("##,## ₺")</h2>
+                                        <p>@item.KitapAdı</p>
+                                        <p>@item.YayınEvi.YayınEviİsim</p>
+                                        <a href="/Urun/@item.KitapAdı.Replace(" ", "-")/@item.ID" class="btn btn-success">İncele</a>
+
+                                        @{
+                                            if (isLogin)
+                                            {
+                                                <a href="#" data-pID="@item.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                                <a href="#" data-pID="@item.ID" class="btn btn-default sepeteekle" onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                            }
+                                            else
+                                            {
+                                                <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                                <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                            }
+
+                                        }
+
+                                    </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>@item.Fiyat.ToString("##,## ₺")</h2>
+                                            <p>@item.KitapAdı</p>
+                                            <a href="/Urun/@item.KitapAdı.Replace(" ", "-")/@item.ID" class="btn btn-success">İncele</a>
+                                            @{
+                                                if (isLogin)
+                                                {
+                                                    <a href="#" data-pID="@item.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                                    <a href="#" data-pID="@item.ID" class="btn btn-default sepeteekle" onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                                }
+                                                else
+                                                {
+                                                    <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                                    <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    }
+                    <div id="JvModal" title="Tebrikler" style="text-align:center">
+                        Ürün başarılı bir şekilde sepete eklendi. <br />
+                        <a href="/sepetim" class="btn btn-success">Sepete Git</a>
+                    </div>
+                    <div class="row"></div>
+                }
+
+
+            </div>
+
+
+       
+
+
+            <div class="category-tab">
+                <!--category-tab-->
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tshirt" data-toggle="tab">Son Eklenenler</a></li>
+                        <li><a href="#blazers" data-toggle="tab">Önerilen Ürünler</a></li>
+                        <li><a href="#sunglass" data-toggle="tab">En Çok Satılanlar</a></li>
+
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="tshirt" >
+
+                        @Html.Action("soneklenen", "PartialView")
+                    </div>
+
+                    <div class="tab-pane fade" id="blazers">
+                        @Html.Action("soneklenen", "PartialView")
+                    </div>
+
+                    <div class="tab-pane fade" id="sunglass">
+                        @Html.Action("soneklenen", "PartialView")
+                    </div>
+
+
+
+                </div>
+            </div><!--/category-tab-->
+
+            <div class="recommended_items">
+                <!--recommended_items-->
+                <h2 class="title text-center">Moda Kitaplar</h2>
+
+                @Html.Action("soneklenen", "PartialView")
+            </div><!--/recommended_items-->
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+

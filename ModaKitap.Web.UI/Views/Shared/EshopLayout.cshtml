@@ -1,0 +1,348 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>@ViewBag.Title - Moda Kitap</title>
+
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+    <link href="~/Content/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/css/price-range.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+  
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="~/Content/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="~/Content/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Content/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Content/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="~/Content/images/ico/apple-touch-icon-57-precomposed.png">
+</head>
+<!--/head-->
+<body>
+    <header id="header">
+        <!--header-->
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href="#"><i class="fa fa-phone"></i> (0216)349-48-46</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> moda@modakitap.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="shop-menu clearfix pull-right">
+                            @{
+                                if (Session["LoginUser"] == null)
+                                {
+                                    <ul class="nav navbar-nav">
+                                        <li><a href="/uyegiris"><i class="fa fa-lock"></i> Giriş Yap </a></li>
+                                        <li><a href="/UyeOl"><i class="fa fa-sign-in"></i> Kayıt OL</a></li>
+                                    </ul>
+                                }
+                                else
+                                {
+                                    var usr = Session["LoginUser"] as ModaKitap.Model.Core.Entity.User;
+                                    <ul class="nav navbar-nav">
+
+                                        <li><a>Hoşgeldiniz @usr.Ad @usr.Soyad</a></li>
+                                        <li><a href="/Profil" class="cart_header"><b class="fa fa-user">Profilim</b></a></li>
+                                        <li> <a href="/Siparislerim" class="cart_header"><b class="fa fa-shopping">Siparişlerim</b></a></li>
+                                        <li><a href="/Sepetim" class="cart_header"><b class="fa fa-shopping-cart">Sepetim</b></a></li>
+                                        <li><a href="/LogOut"><i class="fa fa-sign-in"></i> Çıkış Yap </a></li>
+
+                                    </ul>
+
+                                }
+
+                            }
+
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-sm-2">
+                        <div class="social-icons pull-right">
+
+                            <ul class="nav navbar-nav">
+                                <li><a href="https://tr-tr.facebook.com/modakitap/"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://twitter.com/modakitap?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><i class="fa fa-twitter"></i></a></li>
+
+                                <li><a href="https://www.instagram.com/modakitap/?hl=tr"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/header_top-->
+
+        <div class="header-middle">
+            <!--header-middle-->
+            <div class="container">
+                <div class="row" >
+                    <div class="col-md-4 clearfix">
+                        <div class="logo pull-left">
+                            <a href="/">
+                                <img src="~/Content/images/modakitaplogo.png" style="max-width: 50%;" />
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="mainmenu pull-left" style="padding-top:19px;">
+                        <ul class="nav navbar-nav collapse navbar-collapse" style="padding-left:127px;">
+                            <li><a href="/">Anasayfa</a></li>
+                            <li class="dropdown">
+                                <a href="#">Kategoriler<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    @Html.Action("KategoriMenu", "Home")
+                                </ul>
+                            </li>
+                           
+                            <li class="dropdown">
+                                <a href="#">Yayın Evi<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    @Html.Action("YayınEviMenu", "Home")
+
+                                </ul>
+                            </li>
+
+
+                            <li><a href="/iletisim">İletişim</a></li>
+                        </ul>
+                    </div>
+                   
+                        <div class="search_box pull-right">
+                            @using (Html.BeginForm("Index", "UrunAra", FormMethod.Get))
+                            {
+                                <div style="padding-top:10px;">
+
+                                    @Html.TextBox("searching", null, new { id = "searching", @class = "inp_text inp_search", placeholder = "Kitap Adı", name = "q", type = "text" })
+
+                                    <input type="submit" value="ARA" class="btn" style="max-width:45px;" />
+                                </div>
+                            }
+                        </div>
+                   
+
+                </div>
+            </div>
+        </div><!--/header-middle-->
+
+        <div class="header-bottom">
+            <!--header-bottom-->
+            <div class="container">
+                <div class="row">
+               
+                    
+
+                </div>
+            </div>
+        </div><!--/header-bottom-->
+    </header><!--/header-->
+
+
+
+    <section>
+        <div class="container">
+            @RenderBody()
+            <br />
+        </div>
+    </section>
+
+    <footer id="footer">
+        <!--Footer-->
+        @*
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <div class="companyinfo">
+                                <h2><span>Moda</span>Kitap</h2>
+                                <p>Kitaba dair her şey.</p>
+                            </div>
+                        </div>
+
+            <div class="col-sm-7">
+                <div class="col-sm-3">
+                    <div class="video-gallery text-center">
+                        <a href="#">
+                            <div class="iframe-img">
+                                <img src="~/Content/images/home/iframe1.png" alt="" />
+                            </div>
+                            <div class="overlay-icon">
+                                <i class="fa fa-play-circle-o"></i>
+                            </div>
+                        </a>
+                        <p>Circle of Hands</p>
+                        <h2>24 DEC 2014</h2>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="video-gallery text-center">
+                        <a href="#">
+                            <div class="iframe-img">
+                                <img src="~/Content/images/home/iframe2.png" alt="" />
+                            </div>
+                            <div class="overlay-icon">
+                                <i class="fa fa-play-circle-o"></i>
+                            </div>
+                        </a>
+                        <p>Circle of Hands</p>
+                        <h2>24 DEC 2014</h2>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="video-gallery text-center">
+                        <a href="#">
+                            <div class="iframe-img">
+                                <img src="~/Content/images/home/iframe3.png" alt="" />
+                            </div>
+                            <div class="overlay-icon">
+                                <i class="fa fa-play-circle-o"></i>
+                            </div>
+                        </a>
+                        <p>Circle of Hands</p>
+                        <h2>24 DEC 2014</h2>
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="video-gallery text-center">
+                        <a href="#">
+                            <div class="iframe-img">
+                                <img src="~/Content/images/home/iframe4.png" alt="" />
+                            </div>
+                            <div class="overlay-icon">
+                                <i class="fa fa-play-circle-o"></i>
+                            </div>
+                        </a>
+                        <p>Circle of Hands</p>
+                        <h2>24 DEC 2014</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3" style="float:right;">
+                <div class="address">
+                    <img src="~/Content/images/home/map.png" alt="" />
+                    <p>Kazasker Sk. 12/2 Karadeniz Apt.(Kadıköy/İSTANBUL) </p>
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        *@
+        <div class="footer-widget">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Servisler</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="/iletisim">İletişim</a></li>
+                                <li><a href="/uyegiris">Sipariş Takip</a></li>
+                                <li><a href="/kargoveteslimat">Kargo ve Teslimat</a></li>
+                                <li><a href="/bilgitoplumuhizmetleri">Bilgi Toplumu Hizmetleri</a></li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+                   
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Kategoriler</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                @Html.Action("KategoriFooter", "PartialView")
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Sözleşmeler</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="/gizlilikSözlesmesi">Gizlilik Sözleşmesi</a></li>
+                                <li><a href="/uyelikSozlesmesi">Üyelik Sözleşmesi</a></li>
+                                <li><a href="/mesafeliSatıssözlesmesi">Mesafeli SAtış Sözleşmesi</a></li>
+                                <li><a href="/kisiselveriaydınlatmametni">Kişisel Verilare İlişkin Aydınlatma Metni</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="single-widget">
+                            <h2>Mağazamız</h2>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="/hakkımızda">Hakkımızda</a></li>
+                                <li><a href="/iletisim">Bize Ulaşın</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-sm-offset-1">
+                        <div class="single-widget">
+
+                            <div>
+                                <br />
+                                <img src="~/Content/images/modakitaplogo.png" style="max-width: 75%;" />
+                                <p>Kitaba dair her şey.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <p class="pull-left">Copyright © 2013 Moda Kitap. All rights reserved.</p>
+                    <p class="pull-right">Designed by <span><a target="_blank" href="www.ilkimtengiz.com">iklim Tengiz</a></span></p>
+                </div>
+            </div>
+        </div>
+
+    </footer><!--/Footer-->
+   
+    <script src="~/Content/js/jquery.js"></script>
+    <script src="~/Content/js/jquery-ui.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery.scrollUp.min.js"></script>
+    <script src="~/Content/js/price-range.js"></script>
+    <script src="~/Content/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Content/js/Sepet-begeni.js"></script>
+    @RenderSection("script", false)
+
+</body>
+</html>

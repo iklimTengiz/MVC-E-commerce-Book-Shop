@@ -1,0 +1,267 @@
+﻿@model List<ModaKitap.Model.Core.Entity.Kitaplar>
+
+@{
+    ViewBag.Title = "Index";
+    var isLogin = (bool)ViewBag.IsLogin;
+    var kategori = (ModaKitap.Model.Core.Entity.Kategori)ViewBag.kategori;
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+<style>
+    .productinfo text-center img{
+        height: 277px;
+        width:166px;
+    }
+
+</style>
+
+<script src="~/Content/js/Sepet-begeni.js"></script>
+<!--SLİDER Başlangıç-->
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-12">
+                                <img src="~/Content/images/main-slider2.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+
+                            <div class="col-sm-12">
+
+                                <img src="~/Content/images/main-slider1.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="item">
+
+                            <div class="col-sm-12">
+                                <img src="~/Content/images/main-slider.jpg" class="girl img-responsive" alt="" />
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--SLİDER SON-->
+<!--Left Menu Başlangıç-->
+<div class="container">
+    <div class="row">
+
+
+
+
+
+        <div class="col-sm-3  ">
+            <div class="left-sidebar">
+
+
+                <div class="shipping text-center" style="margin-bottom:30px; margin-top:7px;">
+                    <!--shipping-->
+                    <img src="~/Content/images/bannerk-kare.jpg" />
+
+                </div><!--/shipping-->
+                <h2>Kategoriler</h2>
+                <div class="panel-group category-products" id="accordian">
+                    <!--Kategori Menu-->
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="text-align:center;">
+                            <h4 class="panel-title">@Html.Action("KategoriMenu", "Home")</h4>
+                        </div>
+                    </div>
+                </div>
+                <!--Kategori Menu  SON -->
+
+
+
+
+
+                <div class="shipping text-center">
+                    <!--shipping-->
+                    <img src="~/Content/images/home/shipping.jpg" alt="" />
+                </div><!--/shipping-->
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="col-sm-9 padding-right">
+            <div class="features_items">
+                <h2 class="title text-center">Yeni Kitaplar</h2>
+
+                @{
+                    foreach (var item in Model)
+                    {
+
+                        <div class="col-sm-4" style="margin-bottom:20px;">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="/Admin/KitapResimAdmin/@item.ResimURL" alt="" />
+                                        <h2>@item.Fiyat.ToString("##,## ₺")</h2>
+                                        <p>@item.KitapAdı</p>
+
+                                        <a href="/Urun/@item.KitapAdı.Replace(" ", "-")/@item.ID" class="btn btn-success">İncele</a>
+
+                                        @{
+                                            if (isLogin)
+                                            {
+                                                <a href="#" data-pID="@item.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                                <a href="#" data-pID="@item.ID" class="btn btn-default sepeteekle " onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                            }
+                                            else
+                                            {
+                                                <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                                <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                            }
+
+                                        }
+
+                                    </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>@item.Fiyat.ToString("##,## ₺")</h2>
+                                            <p>@item.KitapAdı</p>
+                                            <a href="/Urun/@item.KitapAdı.Replace(" ", "-")/@item.ID" class="btn btn-success">İncele</a>
+                                            @{
+                                                if (isLogin)
+                                                {
+                                                    <a href="#" data-pID="@item.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                                    <a href="#" data-pID="@item.ID" class="btn btn-default sepeteekle" onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                                }
+                                                else
+                                                {
+                                                    <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                                    <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    }
+
+                    <div id="JvModal" class="JvModal">
+                        <p>Tebrikler  <br />Ürün başarılı bir şekilde sepete eklendi.</p>  <br />
+                        <div>
+                            <a href="/sepetim" class="btn btn-success">Sepete Git</a>
+                            <button class="btn btn-default">Kapat</button>
+                        </div>
+                    </div>
+                    <div class="row"></div>
+                }
+
+
+            </div>
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <div class="banner">
+                        <img src="~/Content/images/banner.jpg" />
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <div class="category-tab">
+                <!--category-tab-->
+                <div class="col-sm-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tshirt" data-toggle="tab">Size Özel Ürünler</a></li>
+                        <li><a href="#blazers" data-toggle="tab">Önerilen Ürünler</a></li>
+                        <li><a href="#sunglass" data-toggle="tab">En Çok Satılanlar</a></li>
+
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane fade active in" id="tshirt">
+                        @{
+                            if (isLogin)
+                            {
+                                @Html.Action("begenilist", "PartialView")
+
+                            }
+                            else
+                            {
+                                @Html.Action("soneklenen", "PartialView")
+                            }
+
+                        }
+
+                    </div>
+
+                    <div class="tab-pane fade" id="blazers">
+                        @Html.Action("soneklenen", "PartialView")
+                    </div>
+
+                    <div class="tab-pane fade" id="sunglass">
+                        @Html.Action("soneklenen", "PartialView")
+                    </div>
+
+
+
+                </div>
+            </div><!--/category-tab-->
+            <div class="row ">
+                <div class="col-md-6 ">
+                    <div class="banner">
+                        <img src="~/Content/images/banner.jpg" />
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="recommended_items">
+                <!--recommended_items-->
+                <h2 class="title text-center">Moda Kitaplar</h2>
+
+                @Html.Action("soneklenen", "PartialView")
+            </div><!--/recommended_items-->
+
+        </div>
+    </div>
+</div>
+
+<!--Left Menu SON-->

@@ -1,0 +1,115 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Kitaplar>
+@{
+    ViewBag.Title = "Index";
+    var isLogin = (bool)ViewBag.IsLogin;
+    var kategori = (ModaKitap.Model.Core.Entity.Kategori)ViewBag.kategori;
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+<script src="~/Content/js/Sepet-begeni.js"></script>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="left-sidebar">
+            <h2>Yayın Evi</h2>
+            <div class="panel-group category-products" id="accordian">
+                <!--Kategori Menu-->
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="text-align:center;">
+                        <h4 class="panel-title">@Html.Action("KategoriMenu", "Home")</h4>
+                    </div>
+                </div>
+            </div>
+            <!--Kategori Menu  SON -->
+
+        </div>
+    </div>
+
+    <div class="col-sm-9 padding-right">
+        @using (Html.BeginForm("Index", "UrunAra", FormMethod.Get))
+        {
+            @Html.TextBox("searching")
+            <input type="submit" value="ARA" />
+        }
+        <div class="features_items">
+            <h2 class="title text-center">Yeni Ürünler</h2>
+
+            @{
+                foreach (var item in Model)
+                {
+
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="/Admin/KitapResimAdmin/@item.ResimURL" alt="" />
+                                    <h2>@item.Fiyat.ToString("##,## ₺")</h2>
+                                    <p>@item.KitapAdı</p>
+                                    <a href="/Urun/@item.KitapAdı.Replace(" ", "-")/@item.ID" class="btn btn-success">İncele</a>
+
+                                    @{
+                                        if (isLogin)
+                                        {
+                                            <a href="#" data-pID="@item.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                            <a href="#" data-pID="@item.ID" class="btn btn-default sepeteekle " onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                        }
+                                        else
+                                        {
+                                            <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                            <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                        }
+
+                                    }
+
+                                </div>
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <h2>@item.Fiyat.ToString("##,## ₺")</h2>
+                                        <p>@item.KitapAdı</p>
+                                        <a href="/Urun/@item.KitapAdı.Replace(" ", "-")/@item.ID" class="btn btn-success">İncele</a>
+                                        @{
+                                            if (isLogin)
+                                            {
+                                                <a href="#" data-pID="@item.ID" class="btn btn-default begeniekle" onclick="begeni()"><i class="fa fa-heart "></i></a>
+                                                <a href="#" data-pID="@item.ID" class="btn btn-default sepeteekle " onclick="myFunction()"><i class="fa fa-shopping-cart "></i></a>
+
+
+                                            }
+                                            else
+                                            {
+                                                <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default"><i class="fa fa-heart "></i></a>
+                                                <a href="/uyegiris" data-pID="@item.ID" class="btn btn-default "><i class="fa fa-shopping-cart "></i></a>
+
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                }
+                <div id="JvModal" title="Tebrikler" style="text-align:center;">
+                    Ürün başarılı bir şekilde sepete eklendi. <br />
+                    <a href="/sepetim" class="btn btn-success">Sepete Git</a>
+                </div>
+                <div class="row"></div>
+            }
+
+
+        </div>
+
+
+    
+
+
+    </div>
+</div>
+
+

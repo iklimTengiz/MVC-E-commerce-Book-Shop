@@ -1,0 +1,77 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Kitaplar>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/AdminContent/plugins/bootstrap-select/js/bootstrap-select.js"></script>
+<script src="~/Content/AdminContent/plugins/bootstrap-select/js/bootstrap-select.min.js"></script>
+<link href="~/Content/AdminContent/plugins/bootstrap-select/css/bootstrap-select.css" rel="stylesheet" />
+<link href="~/Content/AdminContent/plugins/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" />
+
+<h2>Kitap Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kitap Ekle", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Kitap Resmi
+        </th>
+        <th>
+            Kitap
+        </th>
+
+        <th>
+            ISBN
+        </th>
+
+        <th>
+            Fiyat
+        </th>
+
+        <th>
+            Stok
+        </th>
+        <th>
+            Eklenme Tarihi
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            <img src="/Admin/KitapResimAdmin/@item.ResimURL"style="height: 277px; width: 166px;" alt="UrunResim">
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KitapAdı)
+        </td>
+      
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyat)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Stok)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OlusumTarihi)
+        </td>
+       
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+    }
+
+</table>

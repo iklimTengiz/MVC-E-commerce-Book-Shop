@@ -1,0 +1,115 @@
+﻿@model ModaKitap.Model.Core.Entity.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p><b style="color:#ff6a00; font-size:17px;">@Html.DisplayFor(model => model.Ad)&nbsp;@Html.DisplayFor(model => model.Soyad)</b></p>
+<hr style="color:#ff6a00;" />
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            İsim
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+
+        <dt>
+            Soyisim
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soyad)
+        </dd>
+
+        <dt>
+            Mail Adresi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mail)
+        </dd>
+
+        <dt>
+            Telefon
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefon)
+        </dd>
+
+        <dt>
+            Şifre
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sifre)
+        </dd>
+
+        <dt>
+            TC
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TC)
+        </dd>
+
+        <dt>
+            Kullanıcı Aktif mi?
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aktif_Değil)
+        </dd>
+
+        <dt>
+            Kullanıcı Admin mi?
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adminmi)
+        </dd>
+
+        <dt>
+            Oluşturulma Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusumTarihi)
+        </dd>
+
+        <dt>
+            Oluşturan Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+        </dd>
+
+        <dt>
+            Güncellenme Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarih)
+        </dd>
+
+        <dt>
+            Güncelleyen Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>

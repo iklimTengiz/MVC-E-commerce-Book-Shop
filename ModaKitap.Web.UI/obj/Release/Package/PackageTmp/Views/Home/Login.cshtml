@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+
+<link href="~/Content/css/giris-uyeol.css" rel="stylesheet" />
+<div class="container">
+    <div class="golgeli-kutu-kullanici">
+        <div class="login-form">
+            <h2>Giriş Yap</h2>
+            <hr />
+            @{
+                if (ViewBag.Error != null)
+                {
+                    <div class="alert alert-danger">
+                        @ViewBag.Error
+                    </div>
+                }
+
+            }
+            <form method="post" action="/uyegiris">
+                @Html.Label("E- Posta Adresiniz:", null, new { @class = "control-label col-md-3 " })
+                <br />
+
+                @Html.TextBox("Mail", null, new { id = "Mail", @class = " form-control  ", placeholder = "Mail Adresiniz", name = "email", type = "email" })
+
+
+
+
+                <div class="clear"></div>
+
+
+
+                @Html.Label("Şifre:", null, new { @class = "control-label col-md-3 " })
+                <br />
+                @Html.TextBox("Sifre", null, new { id = "Sifre", @class = "form-control ", placeholder = "Şifreniz", name = "password", type = "password" })
+                <div class="clear"></div>
+
+
+                <button type="submit" class="btn btn-default">Giriş Yap</button>
+
+
+            </form>
+        </div>
+
+    </div>
+</div>
+    <br />

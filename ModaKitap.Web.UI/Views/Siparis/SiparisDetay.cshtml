@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Sepet>
+
+@{
+    ViewBag.Title = "SiparisDetay";
+    Layout = "~/Views/Shared/EshopLayout.cshtml";
+}
+
+<h2>SiparisDetay</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Kitaplar.KitapAdı)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OlusumTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OlusturanKullanıcıID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuncellemeTarih)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GuncelleyennKullanıcıID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kitaplar.KitapAdı)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OlusumTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OlusturanKullanıcıID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuncellemeTarih)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GuncelleyennKullanıcıID)
+            </td>
+
+        </tr>
+
+    }
+
+</table>
+
+<div style="float:right;">
+    <p>Toplam İndirim: @Model.Sum(model => model.Kitaplar.İndirim)</p>
+    <p>Toplam Tutar: @Model.Sum(model => model.Kitaplar.Fiyat)</p>
+</div>
+@*@Html.ActionLink("Onayla ve Sipariş Ver", "CreateOrder", new { id = item.ID })
+    <div class="row">
+        <div class="col-sm-12">
+            <a href="CreateOrder" class="btn btn-primary " style=" margin-left:auto;margin-right:auto; width:50%; float:right">Onayla Ve Sipariş Ver</a>
+        </div>
+    </div>
+
+*@

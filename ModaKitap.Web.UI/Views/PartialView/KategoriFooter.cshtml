@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.Kategori>
+
+@{
+
+    foreach (var item in Model)
+    {
+       
+        <li>
+            <a href="/Kategori/@item.Kategoriİsim.Replace(" ","-")/@item.ID">@item.Kategoriİsim</a>
+            <hr />
+        </li>
+    }
+
+}

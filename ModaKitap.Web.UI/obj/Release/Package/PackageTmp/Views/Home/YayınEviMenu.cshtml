@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ModaKitap.Model.Core.Entity.YayınEvi>
+
+@{
+
+    foreach (var item in Model)
+    {
+        <li class="item">
+            <a class="list-group-item-heading" href="/YayınEvi/@item.YayınEviİsim.Replace(" ","-")/@item.ID">@item.YayınEviİsim</a>
+            <hr />
+        </li>
+    }
+
+}

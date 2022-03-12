@@ -1,0 +1,98 @@
+﻿@model ModaKitap.Model.Core.Entity.Siparis
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2><b style="color:dodgerblue;">@Html.DisplayFor(model => model.ID) &nbsp;numaralı sipariş</b></h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Durum
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Durum.Name)
+        </dd>
+
+        <dt>
+            Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Ad)
+        </dd>
+
+        <dt>
+            Adres
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAdres.Title)
+        </dd>
+
+        <dt>
+            Toplam 
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ToplamTutar)
+        </dd>
+
+        <dt>
+            Toplam İndirim
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.İndirimToplamı)
+        </dd>
+
+        <dt>
+            Toplam Tutar
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Toplam)
+        </dd>
+
+        <dt>
+            Sipariş Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusumTarihi)
+        </dd>
+
+        <dt>
+            Sipariş Veren Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OlusturanKullanıcıID)
+        </dd>
+
+        <dt>
+            Güncelleme Tarihi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarih)
+        </dd>
+
+        <dt>
+            Güncelleyen Kullanıcı
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncelleyennKullanıcıID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Düzenle", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Listeye Dön", "Index")
+</p>
